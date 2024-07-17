@@ -4,6 +4,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { dbConnection } from './mongo.js';
+import {comprobarInformacion} from '../src/publication/publication.controller.js';
 
 class Server{
     constructor(){
@@ -17,6 +18,7 @@ class Server{
 
     async conectDB(){
         await dbConnection();
+        await comprobarInformacion(); 
     }
 
     middlewares(){
