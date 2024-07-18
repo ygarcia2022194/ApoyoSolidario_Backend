@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import publicacionesRoutes from '../publication/publication.routes.js'
+import publicacionesRoutes from '../src/publication/publication.routes.js'
 import { dbConnection } from './mongo.js';
 import {comprobarInformacion} from '../src/publication/publication.controller.js';
 
