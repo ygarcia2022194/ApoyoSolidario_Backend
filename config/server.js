@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import publicacionesRoutes from '../src/publication/publication.routes.js'
 import { dbConnection } from './mongo.js';
-import {comprobarInformacion} from '../src/publication/publication.controller.js';
+//import {comprobarInformacion} from '../src/publication/publication.controller.js';
 
 class Server{
     constructor(){
@@ -20,7 +20,7 @@ class Server{
 
     async conectDB(){
         await dbConnection();
-        await comprobarInformacion(); 
+        //await comprobarInformacion(); 
     }
 
     middlewares(){
