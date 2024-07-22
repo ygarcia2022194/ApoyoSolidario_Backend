@@ -3,13 +3,16 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import publicacionesRoutes from '../src/publication/publication.routes.js'
 import { dbConnection } from './mongo.js';
+//import {comprobarInformacion} from '../src/publication/publication.controller.js';
 
 class Server{
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
-
+        this.publicacionesPath = '/apoyoSolidario/v1'
+        
         this.middlewares();
         this.conectDB();
         this.routes();
@@ -17,6 +20,7 @@ class Server{
 
     async conectDB(){
         await dbConnection();
+        //await comprobarInformacion(); 
     }
 
     middlewares(){
@@ -28,7 +32,7 @@ class Server{
     }
 
     routes(){
-
+        this.app.use(this.publicacionesPath, publicacionesRoutes)
     }
 
     listen(){
