@@ -5,13 +5,14 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import publicacionesRoutes from '../src/publication/publication.routes.js'
 import { dbConnection } from './mongo.js';
-//import {comprobarInformacion} from '../src/publication/publication.controller.js';
+import noticiaRoutes from '../src/noticias/noticia.routes.js'
 
 class Server{
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
         this.publicacionesPath = '/apoyoSolidario/v1'
+        this.noticiasPath = '/apoyoSolidario/v1'
         
         this.middlewares();
         this.conectDB();
@@ -33,6 +34,7 @@ class Server{
 
     routes(){
         this.app.use(this.publicacionesPath, publicacionesRoutes)
+        this.app.use(this.noticiasPath, noticiaRoutes)
     }
 
     listen(){
